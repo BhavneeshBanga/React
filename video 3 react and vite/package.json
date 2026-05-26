@@ -1,0 +1,20 @@
+{
+  "name": "video-3-react-and-vite",
+  "version": "1.0.0",
+  "description": "\"my first react app\"",
+  "main": "app.js",
+  "scripts": {
+    "dev" : "vite",
+    "build" : "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "vite": "^8.0.14"
+  }
+}
