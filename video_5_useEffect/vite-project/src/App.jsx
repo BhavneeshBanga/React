@@ -1,62 +1,137 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
+import './App.css'
+import Navbar from './components/Navbar.jsx'
+
+
+function App() {
+
+
+  const [count, setCount] = useState(0);
+  const [first, setfirst] = useState(0);
+  const [color, setcolor] = useState(0);
 
 
 
-export default function App() {
-
-  const [users, SetUser] = useState([]);
-  const [count, setcount] = useState(30);
-
-  // async function Githubprofile() {
-
-  //   const response = await fetch ("https://api.github.com/users")
-  //   const data =  await response.json();
-  //   console.log(data);
-  //   SetUser(data);
-  //   console.log('hello dost');
-  // }
-
-
-
-  //ab sirf ek hi baar hello print hua hai , matlab sirf ek hi baar chala hai
-  useEffect(()=>{
-    async function Githubprofile() {
-
-    const response = await fetch (`https://api.github.com/users?per_page=${count}`)
-    const data =  await response.json();
-    SetUser(data);
-  }
-
-  Githubprofile()
-  }, [count])
-    // empty array nahi denge toh yeh bhi baar baar execute hoga
-
-    // future mai aisi condition aa sakti hai ki hame isko dubara call karna pade 
-    
-    // function handleChange(e) {
-    //   console.log(e.target.value);
-    //   setText(e.target.value.toUpperCase());
-      
-    // }
-    
+  useEffect(() => {
+    alert("count was changed")
+    setcolor(color + 1)
+  }, [count]);
 
 
   return (
     <>
-      <h1>Github users</h1>
-      <input type="number" value={count} onChange={(e)=>{
-        setcount(e.target.value)
-      }} />
-      <div style={{display: "flex", justifyContent:"center", alignItems: "center", flexWrap : "wrap", gap:"10px", 
-        borderRadius : "5px"}}>
-        {
-          users.map(user => (
-            <img src={user.avatar_url} height={"100px"} width={"100px"} key={user.login}></img>
-          ))
-          // key unique deni zarui hai error nahi aayega
-        }
-      </div>
+      <Navbar color={"navy " + "blue" + color}></Navbar>
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
+        </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
     </>
-  );
+  )
 }
 
+export default App
